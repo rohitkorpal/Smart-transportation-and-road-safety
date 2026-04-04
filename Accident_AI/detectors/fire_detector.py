@@ -1,3 +1,19 @@
+import os
+import gdown
+
+folder_id = "1ojfHWoPK0U7pbhLZ2CiMx06yloqkZrGL"
+
+# Create models directory
+if not os.path.exists("models"):
+    os.makedirs("models")
+
+# Download models only if not already present
+if len(os.listdir("models")) == 0:
+    gdown.download_folder(
+        id=folder_id,
+        output="models",
+        quiet=False
+    )
 """
 Fire and Smoke Detector
 Detects fire and smoke in frames (Phase-3 feature)
@@ -7,6 +23,8 @@ from ultralytics import YOLO
 import numpy as np
 import cv2
 
+def model_path(name):
+    return os.path.join("models", name)
 MODEL_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "models")
 os.makedirs(MODEL_DIR, exist_ok=True)
 
