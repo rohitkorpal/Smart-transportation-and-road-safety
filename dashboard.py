@@ -2,6 +2,22 @@
 Streamlit Dashboard for Accident Detection System
 Live dashboard with video feed, alerts, and statistics
 """
+import os
+import gdown
+
+folder_id = "1ojfHWoPK0U7pbhLZ2CiMx06yloqkZrGL"
+
+# Create models directory
+if not os.path.exists("models"):
+    os.makedirs("models")
+
+# Download models only if not already present
+if len(os.listdir("models")) == 0:
+    gdown.download_folder(
+        id=folder_id,
+        output="models",
+        quiet=False
+    )
 import streamlit as st
 import cv2
 import numpy as np
@@ -12,7 +28,8 @@ import json
 
 # Import system components
 from main import AccidentDetectionSystem
-
+def model_path(name):
+    return os.path.join("models", name)
 # Page config
 st.set_page_config(
     page_title="Accident Detection AI System",
