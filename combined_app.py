@@ -1,3 +1,19 @@
+import os
+import gdown
+
+folder_id = "1ojfHWoPK0U7pbhLZ2CiMx06yloqkZrGL"
+
+# Create models directory
+if not os.path.exists("models"):
+    os.makedirs("models")
+
+# Download models only if not already present
+if len(os.listdir("models")) == 0:
+    gdown.download_folder(
+        id=folder_id,
+        output="models",
+        quiet=False
+    )
 import subprocess
 import sys
 
