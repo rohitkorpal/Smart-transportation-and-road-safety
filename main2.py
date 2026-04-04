@@ -1,3 +1,19 @@
+import os
+import gdown
+
+folder_id = "1ojfHWoPK0U7pbhLZ2CiMx06yloqkZrGL"
+
+# Create models directory
+if not os.path.exists("models"):
+    os.makedirs("models")
+
+# Download models only if not already present
+if len(os.listdir("models")) == 0:
+    gdown.download_folder(
+        id=folder_id,
+        output="models",
+        quiet=False
+    )
 import logging
 # silence the Streamlit ScriptRunContext warnings
 logging.getLogger("streamlit.runtime.scriptrunner_utils.script_run_context").setLevel(logging.ERROR)
@@ -20,7 +36,8 @@ try:
 except Exception as e:
     st.error(f"Error loading model: {e}")
     yolo_model = None
-
+def model_path(name):
+    return os.path.join("models", name)
 vehicle_ids = [2, 3, 5, 7]  # car, motorcycle, bus, truck
 
 # Streamlit Page Config
