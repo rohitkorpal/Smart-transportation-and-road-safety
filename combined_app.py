@@ -36,6 +36,8 @@ from datetime import datetime
 from ultralytics import YOLO
 import json
 
+def model_path(name):
+    return os.path.join("models", name)
 # Setup relative imports for Accident_AI module
 current_dir = os.path.dirname(os.path.abspath(__file__))
 accident_ai_path = os.path.join(current_dir, 'Accident_AI')
