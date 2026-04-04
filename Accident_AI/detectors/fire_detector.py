@@ -23,6 +23,9 @@ from ultralytics import YOLO
 import numpy as np
 import cv2
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+MODEL_DIR = os.path.join(BASE_DIR, "models")
+
 def model_path(name):
     return os.path.join("models", name)
 
