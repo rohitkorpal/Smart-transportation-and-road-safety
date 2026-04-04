@@ -25,8 +25,7 @@ import cv2
 
 def model_path(name):
     return os.path.join("models", name)
-MODEL_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "models")
-os.makedirs(MODEL_DIR, exist_ok=True)
+
 
 class FireDetector:
     def __init__(self, model_name="best.pt", conf_threshold=0.2):
