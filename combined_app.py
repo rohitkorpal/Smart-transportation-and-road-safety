@@ -1,3 +1,8 @@
+import subprocess
+import sys
+
+subprocess.check_call([sys.executable, "-m", "pip", "install", "streamlit", "opencv-python", "numpy", "ultralytics"])
+
 import logging
 import warnings
 import os
