@@ -1,3 +1,19 @@
+import os
+import gdown
+
+folder_id = "1ojfHWoPK0U7pbhLZ2CiMx06yloqkZrGL"
+
+# Create models directory
+if not os.path.exists("models"):
+    os.makedirs("models")
+
+# Download models only if not already present
+if len(os.listdir("models")) == 0:
+    gdown.download_folder(
+        id=folder_id,
+        output="models",
+        quiet=False
+    )
 """
 Main Accident Detection System
 Real-time road safety monitoring with AI-based accident detection
@@ -28,6 +44,9 @@ from logic.motion_prediction import MotionPredictor
 from logic.overload_logic import OverloadDetector
 from logic.alert_manager import AlertManager
 
+def model_path(name):
+    return os.path.join("models", name)
+    
 class AccidentDetectionSystem:
     def __init__(self, video_source, fps=30, enable_pose=False, enable_fire=False, enable_road_condition=True, enable_helmet=True, enable_overload=True):
         """
