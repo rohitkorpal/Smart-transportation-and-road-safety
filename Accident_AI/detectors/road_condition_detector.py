@@ -1,3 +1,19 @@
+import os
+import gdown
+
+folder_id = "1ojfHWoPK0U7pbhLZ2CiMx06yloqkZrGL"
+
+# Create models directory
+if not os.path.exists("models"):
+    os.makedirs("models")
+
+# Download models only if not already present
+if len(os.listdir("models")) == 0:
+    gdown.download_folder(
+        id=folder_id,
+        output="models",
+        quiet=False
+    )
 """
 Road Condition Detector using Custom YOLO Model
 Detects road cracks and damage: longitudinal crack, transverse crack, alligator crack, other corruption, pothole
@@ -8,6 +24,9 @@ import numpy as np
 
 MODEL_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "models")
 os.makedirs(MODEL_DIR, exist_ok=True)
+
+def model_path(name):
+    return os.path.join("models", name)
 
 class RoadConditionDetector:
     def __init__(self, model_name="crack_best.pt", conf_threshold=0.1):
