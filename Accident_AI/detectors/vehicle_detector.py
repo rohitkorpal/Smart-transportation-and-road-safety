@@ -22,8 +22,8 @@ import os
 from ultralytics import YOLO
 import numpy as np
 
-MODEL_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "models")
-os.makedirs(MODEL_DIR, exist_ok=True)
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+MODEL_DIR = os.path.join(BASE_DIR, "models")
 
 def model_path(name):
     return os.path.join("models", name)
