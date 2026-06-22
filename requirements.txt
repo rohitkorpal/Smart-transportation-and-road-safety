@@ -7,3 +7,4 @@ torch
 torchvision
 gdown
 dill
+pip>=25.1
